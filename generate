@@ -1,0 +1,20 @@
+#!/bin/bash
+set -Eeuo pipefail
+
+header()
+{
+cat <<HEREDOC
+! Title: Restaurant blacklist
+! GitHub: https://github.com/florczakraf/restaurant-blacklist
+! Last updated: $(date +%Y-%m-%d)
+
+HEREDOC
+}
+
+pyszne()
+{
+    cat blacklist.txt | xargs -I{} echo "pyszne.pl##:xpath(//a[contains(text(), '{}')]/parent::h2/parent::div/parent::div)"
+}
+
+header
+pyszne
